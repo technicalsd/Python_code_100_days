@@ -1,16 +1,31 @@
-# Files just don't have name, but it does have paths
+import time
+from selenium.webdriver.common.keys import Keys
+from selenium import webdriver
 
-# There are two file paths
-# 1. Absolute file paths
-# 2. Relative file paths
+chrome_driver_path = "C:\Development\chromedriver.exe"
 
-# 1. Absolute file path
-# with open(r"\Users\akash\OneDrive\Desktop\saurabh.txt") as file:
-#     content = file.read()
-#     print(content)
+driver = webdriver.Chrome(chrome_driver_path)
+
+driver.get("https://en.wikipedia.org/wiki/Main_Page")
+
+article_count = driver.find_element("css selector", "#articlecount a")
+# Because it was id we used # sign
+
+# article_count.click()
+
+all_portals=driver.find_element("link text","Wikipedia")
+
+search = driver.find_element(by="name",value="search")
 
 
-# 2. Relative file  path
-with open("../../../Desktop/saurabh.txt") as file2:
-    content = file2.read()
-    print(content)
+search.send_keys("Python")
+
+search.send_keys(Keys.ENTER)
+
+
+
+
+
+time.sleep(60)
+
+# driver.quit()
